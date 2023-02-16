@@ -1,6 +1,6 @@
 {
   "name": "@int0x80-sys/json-checker",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Dead simple json checker library written in typescript",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
