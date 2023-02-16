@@ -23,7 +23,17 @@ class IsArrayChecker<ArrayType extends unknown[]> extends Checker<ArrayType> {
 		super();
 	}
 
-	validate(object: unknown): object is ArrayType {
+	ofLength(length: number) {
+		this.props_.arrayLength = length;
+		return this;
+	}
+
+	andIsEmpty() {
+		this.ofLength(0);
+		return this;
+	}
+
+	protected validate_(object: unknown): object is ArrayType {
 		const { arrayCheckers, arrayLength, condition } = this.props_;
 
 		return Array.isArray(object) && (
@@ -35,16 +45,6 @@ class IsArrayChecker<ArrayType extends unknown[]> extends Checker<ArrayType> {
 			typeof arrayLength === "undefined" ||
 			object.length === arrayLength
 		);
-	}
-
-	ofLength(length: number) {
-		this.props_.arrayLength = length;
-		return this;
-	}
-
-	andIsEmpty() {
-		this.ofLength(0);
-		return this;
 	}
 }
 

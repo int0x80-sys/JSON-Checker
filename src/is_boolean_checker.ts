@@ -6,19 +6,19 @@ class IsBooleanChecker extends Checker<boolean> {
 		super();
 	}
 
-	validate(object: unknown): object is boolean {
-		return typeof object === "boolean" && (
-			typeof this.booleanValue_ === "undefined" ||
-			this.booleanValue_ === object
-		);
-	}
-
 	andIsTrue() {
 		this.booleanValue_ = true;
 	}
 
 	andIsFalse() {
 		this.booleanValue_ = false;
+	}
+
+	protected validate_(object: unknown): object is boolean {
+		return typeof object === "boolean" && (
+			typeof this.booleanValue_ === "undefined" ||
+			this.booleanValue_ === object
+		);
 	}
 }
 

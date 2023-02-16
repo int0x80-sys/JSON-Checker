@@ -10,7 +10,7 @@ class IsObjectChecker<ObjectType extends { [key: string]: unknown }> extends Che
 		super();
 	}
 
-	validate(object: unknown): object is ObjectType {
+	protected validate_(object: unknown): object is ObjectType {
 		return typeof object === "object" &&
 			!Array.isArray(object) &&
 			object !== null &&

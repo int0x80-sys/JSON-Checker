@@ -8,7 +8,7 @@ class IsNumberChecker extends Checker<number> {
 		super();
 	}
 
-	validate(object: unknown): object is number {
+	protected validate_(object: unknown): object is number {
 		return typeof object === "number"
             && (!this.constraint_ || this.constraint_(object));
 	}

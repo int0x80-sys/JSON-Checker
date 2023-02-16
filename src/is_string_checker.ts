@@ -8,7 +8,7 @@ class IsStringChecker extends Checker<string> {
 		super();
 	}
 
-	validate(object: unknown): object is string {
+	protected validate_(object: unknown): object is string {
 		return typeof object === "string"
             && (!this.constraint_ || this.constraint_(object));
 	}

@@ -10,7 +10,7 @@ class IsTupleChecker<TupleType extends [...unknown[]]> extends Checker<TupleType
 		super();
 	}
 
-	validate(object: unknown): object is TupleType {
+	protected validate_(object: unknown): object is TupleType {
 		return Array.isArray(object) &&
             object.length === this.tupleCheckers_.length &&
             this.tupleCheckers_.every((checker, index) => checker.validate(object[index]));
