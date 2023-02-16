@@ -50,6 +50,12 @@ function IsArray<ArrayType extends unknown[]>(props: IsArrayCheckerProps<ArrayTy
 	return new IsArrayChecker(props);
 }
 
+IsArray.of = function IsArrayOf<ArrayType extends unknown[]>(...checkers: ArrayTypeToCheckerArrayType<ArrayType>) {
+	return IsArray({
+		arrayCheckers: checkers
+	});
+};
+
 IsArray.ofStrings = function IsArrayOfStrings(stringConstraint?: StringCheckerConstraint, prop: Omit<IsArrayCheckerProps<[string]>, "arrayCheckers"> = {}) {
 	return IsArray({
 		...prop,
