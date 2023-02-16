@@ -5,14 +5,12 @@ import IsNumber, { NumberCheckerConstraint } from "./is_number_checker";
 import IsObject, { IsObjectConstraint } from "./is_object_checker";
 import IsString, { StringCheckerConstraint } from "./is_string_checker";
 import IsTuple, { TupleToCheckerTuple } from "./is_tuple_checker";
+
+import ArrayTypeToCheckerArrayType from "./utils/array_type_to_array_checker_type";
 import UnwrapArrayTypes from "./utils/unwrap_array_types";
 
-type ArrayTypeToCheckerType<ArrayType extends unknown[]> = {
-	[Index in keyof ArrayType]: Checker<ArrayType[Index]>
-};
-
 type IsArrayCheckerProps<ArrayType extends unknown[]> = {
-	arrayCheckers?: ArrayTypeToCheckerType<ArrayType>,
+	arrayCheckers?: ArrayTypeToCheckerArrayType<ArrayType>,
 	arrayLength?: number,
 	condition?: (item: UnwrapArrayTypes<ArrayType>) => boolean
 }
