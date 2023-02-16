@@ -19,15 +19,10 @@ class IsObjectChecker<ObjectType extends { [key: string]: unknown }> extends Che
 				Object
 					.keys(this.objectRules_)
 					.every((key) => 
-						this.keyExistsInObjectRule_(object, key) &&
 						this.objectRules_?.[key]
 							.validate((object as { [K in keyof ObjectType]: unknown })[key]))
 			);
 
-	}
-
-	keyExistsInObjectRule_(object: object, key: unknown): key is keyof ObjectType {
-		return typeof key === "string" && key in object;
 	}
 }
 
